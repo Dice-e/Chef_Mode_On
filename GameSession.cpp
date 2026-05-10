@@ -1,56 +1,39 @@
 #include "GameSession.h"
 #include "Food.h"
-#include <iostream>
-
-
-
-GameSession::GameSession(Food food) : currentFood(food) {
-    points = 100;
-}
-
-void GameSession::deductPoints() {
-    points -= 10;
-};
-
-bool GameSession::checkFailure() {
-    return points < 30;
-};
 
 void GameSession::processFood() {
-    std::cout << "\nOrder: " << currentFood.getFoodName()<< std::endl;
+    std::cout << "\n--- KITCHEN START: " << currentFood.getFoodName() << " ---" << std::endl;
 
-    for (int i = 0; i < currentFood.steps.size(); i++) {
-        bool correct = false;
+    for (int i = 0; i < currentFood.questions.size(); i++) {
+        bool stepCorrect = false;
 
-        while (!correct) {
-            Food::Step& step = currentFood.steps[i];
+        while (!stepCorrect) {
+            std::cout << "\nTASK: " << currentFood.questions[i] << std::endl;
 
-            std::cout << "\nStep " << step.stepNumber << ": " << step.question << std::endl;
-
-            for (int j = 0; j < step.choices.size(); j++) {
-                std::cout << j << ". " << step.choices[j]<< std::endl;
+            // Display A, B, C, D choices
+            char letters[] = { 'A', 'B', 'C', 'D' };
+            for (int j = 0; j < currentFood.choices[i].size(); j++) {
+                std::cout << letters[j] << ". " << currentFood.choices[i][j] << std::endl;
             }
 
-            int answer;
-            std::cout << "Enter answer: ";
-            std::cin >> answer;
+            char input;
+            std::cout << "Chef's Action: ";
+            std::cin >> input;
+            input = toupper(input);
 
-            if (step.checkAnswer(answer)) {
-                std::cout << "Correct!\n";
-                correct = true;
+            if (input == currentFood.answers[i]) {
+                std::cout << ">> Correct! Moving on..." << std::endl;
+                stepCorrect = true;
             }
             else {
                 deductPoints();
-                std::cout << "Wrong! Points: " << points << std::endl;
-
+                std::cout << ">> WRONG! Points: " << points << std::endl;
                 if (checkFailure()) {
-                    std::cout << "Level Failed!\n";
+                    std::cout << ">> YOU FAILED THE DISH!" << std::endl;
                     return;
                 }
             }
         }
     }
-
-    currentFood.isCompleted = true;
-    std::cout << "\nOrder Complete!\n";
-};
+    std::cout << "\nSUCCESS: Dish completed!" << std::endl;
+}

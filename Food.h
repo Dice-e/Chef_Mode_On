@@ -10,15 +10,18 @@
 
 class Food {
 protected:
+    
+
+public:
     std::string foodName;
     std::vector<std::string> questions;
     std::vector<std::vector<std::string>> choices;
     std::vector<char> answers;
 
-public:
     Food(std::string name);
-
-	
+	void addStep(std::string q, std::vector<std::string> c, char a);
+	std::string getFoodName() const;
+   
 
     struct Step { 
         int stepNumber;
