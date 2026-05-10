@@ -5,6 +5,13 @@
 
 Food::Food(std::string name) {
     foodName = name;
+	isCompleted = false;
+}
+
+bool isCompleted = false;
+
+bool Food::Step::checkAnswer(int answer) {
+    return answer == 0; 
 }
 
 void Food::addStep(std::string question,
@@ -15,6 +22,8 @@ void Food::addStep(std::string question,
     choices.push_back(option);
     answers.push_back(answer);
 }
+
+
 
 std::string Food::getFoodName () const {
     return foodName;

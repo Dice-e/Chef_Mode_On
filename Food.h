@@ -18,6 +18,18 @@ protected:
 public:
     Food(std::string name);
 
+	
+
+    struct Step { 
+        int stepNumber;
+        std::string question;
+        std::vector<std::string> choices;
+        bool checkAnswer(int answer);
+    };
+
+    bool isCompleted; 
+    std::vector<Step> steps;
+
     void addStep(std::string question,
         std::vector<std::string> option,
         char answer);

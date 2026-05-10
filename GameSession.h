@@ -5,15 +5,16 @@
 
 
 class GameSession {
-public:
+private:
     int points;
     Food currentFood;
 
+public:
     GameSession(Food food);
 
     void deductPoints();
     bool checkFailure();
-    void processOrder();
+    void processFood();
 };
 
 #endif

@@ -1,9 +1,10 @@
 #include "GameSession.h"
+#include "Food.h"
 #include <iostream>
 
-using namespace std;
 
-GameSession::GameSession(Order order) : currentOrder(order) {
+
+GameSession::GameSession(Food food) : currentFood(food) {
     points = 100;
 }
 
@@ -12,44 +13,44 @@ void GameSession::deductPoints() {
 };
 
 bool GameSession::checkFailure() {
-    return points < 30
-}
+    return points < 30;
+};
 
-void GameSession::processOrder() {
-    cout << "\nOrder: " << currentOrder.foodType << endl;
+void GameSession::processFood() {
+    std::cout << "\nOrder: " << currentFood.getFoodName()<< std::endl;
 
-    for (int i = 0; i < currentOrder.steps.size(); i++) {
+    for (int i = 0; i < currentFood.steps.size(); i++) {
         bool correct = false;
 
         while (!correct) {
-            Step& step = currentOrder.steps[i];
+            Food::Step& step = currentFood.steps[i];
 
-            cout << "\nStep " << step.stepNumber << ": " << step.question << endl;
+            std::cout << "\nStep " << step.stepNumber << ": " << step.question << std::endl;
 
             for (int j = 0; j < step.choices.size(); j++) {
-                cout << j << ". " << step.choices[j].text << endl;
+                std::cout << j << ". " << step.choices[j]<< std::endl;
             }
 
             int answer;
-            cout << "Enter answer: ";
-            cin >> answer;
+            std::cout << "Enter answer: ";
+            std::cin >> answer;
 
             if (step.checkAnswer(answer)) {
-                cout << "Correct!\n";
+                std::cout << "Correct!\n";
                 correct = true;
             }
             else {
                 deductPoints();
-                cout << "Wrong! Points: " << points << endl;
+                std::cout << "Wrong! Points: " << points << std::endl;
 
                 if (checkFailure()) {
-                    cout << "Level Failed!\n";
+                    std::cout << "Level Failed!\n";
                     return;
                 }
             }
         }
     }
 
-    currentOrder.isCompleted = true;
-    cout << "\nOrder Complete!\n";
+    currentFood.isCompleted = true;
+    std::cout << "\nOrder Complete!\n";
 };
