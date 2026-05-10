@@ -9,7 +9,7 @@ GameSession::GameSession(Order order) : currentOrder(order) {
 
 void GameSession::deductPoints() {
     points -= 10;
-}
+};
 
 bool GameSession::checkFailure() {
     return points < 30;
