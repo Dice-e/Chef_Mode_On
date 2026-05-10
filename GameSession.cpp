@@ -12,7 +12,7 @@ void GameSession::deductPoints() {
 };
 
 bool GameSession::checkFailure() {
-    return points < 30;
+    return points < 30
 }
 
 void GameSession::processOrder() {
