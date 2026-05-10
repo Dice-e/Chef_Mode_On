@@ -1,0 +1,8 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Solution Items/" />
+  <Project Path="Chef_Mode_On/Chef_Mode_On.vcxproj" Id="f4250413-5b69-4ba2-8197-bc292918308a" />
+</Solution>
