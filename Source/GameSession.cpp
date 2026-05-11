@@ -55,4 +55,8 @@ void GameSession::processFood() {
         }
     }
     std::cout << "\nSUCCESS: Dish completed!" << std::endl;
-}
+    }
+
+    currentOrder.isCompleted = true;
+    cout << "\nOrder Complete!\n";
+};

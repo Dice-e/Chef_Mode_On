@@ -64,7 +64,7 @@ bool Food::playFood(int& score) {
             char userAnswer;
             std::cout << "Answer: ";
             std::cin >> userAnswer;
-			
+
 
             userAnswer = toupper(userAnswer);
 
@@ -91,7 +91,7 @@ bool Food::playFood(int& score) {
                     std::cout << "GAME OVER!\n";
                     return false;
                 
-            }
+                }
 
          
             }
