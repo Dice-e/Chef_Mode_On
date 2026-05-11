@@ -9,7 +9,7 @@
 #include <ctime>
 
 class Food {
-protected:
+public:
     std::string foodName;
     std::vector<std::string> questions;
     std::vector<std::vector<std::string>> choices;
@@ -17,14 +17,14 @@ protected:
 
 public:
     Food(std::string name);
-
+	bool isCompleted;
     void addStep(std::string question,
         std::vector<std::string> option,
         char answer);
 
     bool playFood(int& score);
 
-    std::string getFoodName();
+    std::string getFoodName () const;
 };
 
 #endif

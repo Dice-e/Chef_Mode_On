@@ -8,11 +8,7 @@ Food::Food(std::string name) {
 	isCompleted = false;
 }
 
-bool isCompleted = false;
 
-bool Food::Step::checkAnswer(int answer) {
-    return answer == 0; 
-}
 
 void Food::addStep(std::string question,
     std::vector<std::string> option,
