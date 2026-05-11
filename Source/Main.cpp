@@ -37,7 +37,7 @@ int main() {
 
     // 7. Final ending message
     std::cout << "\n========================================" << std::endl;
-    std::cout << "   Game Over! Thanks for playing!      " << std::endl;
+    std::cout << "   Congrats! Thanks for playing!      " << std::endl;
     std::cout << "========================================" << std::endl;
 
     std::cout << "\nPress Enter to exit...";

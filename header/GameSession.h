@@ -3,17 +3,16 @@
 #define GAMESESSION_H
 #include "Food.h"
 
-
 class GameSession {
 private:
     int points;
     Food currentFood;
 
 public:
-    GameSession(Food food);
+    explicit GameSession(const Food& food, int startingPoints = 100);
 
-    void deductPoints();
-    bool checkFailure();
+    void deductPoints(int amount = 10);
+    bool checkFailure() const;
     void processFood();
 };
 

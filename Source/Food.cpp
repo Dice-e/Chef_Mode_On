@@ -64,14 +64,18 @@ bool Food::playFood(int& score) {
             char userAnswer;
             std::cout << "Answer: ";
             std::cin >> userAnswer;
+			
 
             userAnswer = toupper(userAnswer);
 
-            if (userAnswer == letters[correctIndex]) {
+            if
+                (userAnswer == letters[correctIndex]) {
                 std::cout << "Correct!\n";
                 correct = true;
             }
-            else {
+
+            else if(userAnswer != letters[correctIndex]) {
+
                 score -= 10;
 
                 std::cout << "Wrong! -10 points\n";
@@ -80,6 +84,14 @@ bool Food::playFood(int& score) {
                 if (score <= 0) {
                     std::cout << "GAME OVER!\n";
                     return false;
+                
+            }
+
+            else{
+                    score = 0;
+                    std::cout << "Invalid input mah nigga\n";
+                    std::cout << "Score: " << score << "\n";
+                    return true;
                 }
             }
         }
@@ -89,4 +101,13 @@ bool Food::playFood(int& score) {
         << " completed successfully!\n";
 
     return true;
+}
+
+void userAnswer(char input) {
+	char letters[] = { 'A', 'B', 'C', 'D' };
+	input = toupper(input);
+
+  
+	
+    
 }

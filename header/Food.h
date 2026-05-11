@@ -10,7 +10,6 @@
 
 class Food {
 protected:
-    
 
 public:
     std::string foodName;
@@ -19,28 +18,24 @@ public:
     std::vector<char> answers;
 
     Food(std::string name);
-	void addStep(std::string q, std::vector<std::string> c, char a);
-	std::string getFoodName() const;
-   
 
-    struct Step { 
+    struct Step {
         int stepNumber;
         std::string question;
         std::vector<std::string> choices;
         bool checkAnswer(int answer);
     };
 
-    bool isCompleted; 
+    bool isCompleted;
     std::vector<Step> steps;
 
     void addStep(std::string question,
         std::vector<std::string> option,
         char answer);
-	
 
     bool playFood(int& score);
 
-    std::string getFoodName() const;
+    std::string getFoodName() const;    
 };
 
 #endif
