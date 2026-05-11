@@ -1,53 +1,60 @@
 #include "GameSession.h"
+#include "Food.h"
 #include <iostream>
+#include <cctype>
 
-using namespace std;
-
-GameSession::GameSession(Order order) : currentOrder(order) {
-    points = 100;
+GameSession::GameSession(const Food& food, int startingPoints)
+    : points(startingPoints), currentFood(food)
+{
 }
 
-void GameSession::deductPoints() {
-    points -= 10;
+void GameSession::deductPoints(int amount) {
+    points -= amount;
+    if (points < 0) points = 0;
 }
 
-bool GameSession::checkFailure() {
-    return points < 30;
+bool GameSession::checkFailure() const {
+    return points <= 0;
 }
 
-void GameSession::processOrder() {
-    cout << "\nOrder: " << currentOrder.foodType << endl;
+void GameSession::processFood() {
+    std::cout << "\n--- KITCHEN START: " << currentFood.getFoodName() << " ---" << std::endl;
 
-    for (int i = 0; i < currentOrder.steps.size(); i++) {
-        bool correct = false;
+    for (size_t i = 0; i < currentFood.questions.size(); i++) {
+        bool stepCorrect = false;
 
-        while (!correct) {
-            Step& step = currentOrder.steps[i];
+        while (!stepCorrect) {
+            std::cout << "\nTASK: " << currentFood.questions[i] << std::endl;
 
-            cout << "\nStep " << step.stepNumber << ": " << step.question << endl;
-
-            for (int j = 0; j < step.choices.size(); j++) {
-                cout << j << ". " << step.choices[j].text << endl;
+            // Display A, B, C, D choices
+            const char letters[] = { 'A', 'B', 'C', 'D' };
+            for (size_t j = 0; j < currentFood.choices[i].size() && j < (sizeof(letters) / sizeof(letters[0])); j++) {
+                std::cout << letters[j] << ". " << currentFood.choices[i][j] << std::endl;
             }
 
-            int answer;
-            cout << "Enter answer: ";
-            cin >> answer;
+            char input;
+            std::cout << "Chef's Action: ";
+            std::cin >> input;
+            input = static_cast<char>(std::toupper(static_cast<unsigned char>(input)));
 
-            if (step.checkAnswer(answer)) {
-                cout << "Correct!\n";
-                correct = true;
+            if (input != 'A' && input != 'B' && input != 'C' && input != 'D') {
+                std::cout << "Invalid input \n";
+            }
+            else if (input == currentFood.answers[i]) {
+                std::cout << ">> Correct! Moving on..." << std::endl;
+                stepCorrect = true;
             }
             else {
                 deductPoints();
-                cout << "Wrong! Points: " << points << endl;
-
+                std::cout << ">> WRONG! Points: " << points << std::endl;
                 if (checkFailure()) {
-                    cout << "Level Failed!\n";
+                    std::cout << ">> YOU FAILED THE DISH!" << std::endl;
                     return;
                 }
             }
         }
+    }
+    std::cout << "\nSUCCESS: Dish completed!" << std::endl;
     }
 
     currentOrder.isCompleted = true;

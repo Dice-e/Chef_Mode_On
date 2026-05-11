@@ -1,7 +1,17 @@
 #include "Food.h"
+#include <random>
+#include <algorithm>
+
 
 Food::Food(std::string name) {
     foodName = name;
+	isCompleted = false;
+}
+
+bool isCompleted = false;
+
+bool Food::Step::checkAnswer(int answer) {
+    return answer == 0; 
 }
 
 void Food::addStep(std::string question,
@@ -13,7 +23,9 @@ void Food::addStep(std::string question,
     answers.push_back(answer);
 }
 
-std::string Food::getFoodName() {
+
+
+std::string Food::getFoodName () const {
     return foodName;
 }
 
@@ -29,7 +41,10 @@ bool Food::playFood(int& score) {
 
             std::vector<std::string> tempChoices = choices[i];
 
-            std::random_shuffle(tempChoices.begin(), tempChoices.end());
+			std::random_device rd;
+			std::mt19937 g(rd());
+
+            std::shuffle(tempChoices.begin(), tempChoices.end(),g);
 
             std::cout << "\n" << questions[i] << "\n";
 
@@ -50,13 +65,23 @@ bool Food::playFood(int& score) {
             std::cout << "Answer: ";
             std::cin >> userAnswer;
 
+
             userAnswer = toupper(userAnswer);
 
-            if (userAnswer == letters[correctIndex]) {
+
+            if (userAnswer != 'A' && userAnswer != 'B' && userAnswer != 'C' && userAnswer != 'D') {
+                score = 0;
+                std::cout << "Invalid input \n";
+                std::cout << "Score: " << score << "\n";
+                return true;
+            }
+              else if (userAnswer == letters[correctIndex]) {
                 std::cout << "Correct!\n";
                 correct = true;
             }
+                      
             else {
+
                 score -= 10;
 
                 std::cout << "Wrong! -10 points\n";
@@ -65,7 +90,10 @@ bool Food::playFood(int& score) {
                 if (score <= 0) {
                     std::cout << "GAME OVER!\n";
                     return false;
+                
                 }
+
+         
             }
         }
     }
@@ -74,4 +102,24 @@ bool Food::playFood(int& score) {
         << " completed successfully!\n";
 
     return true;
+}
+
+void userAnswer(char input) {
+	char letters[] = { 'A', 'B', 'C', 'D' };
+    switch (input)
+    {
+    case 1:
+		letters[0] = 'A';
+        std::cout << "Correct!\n";
+		break;
+    case 2:
+		letters[1] = 'B';
+
+    default:
+        break;
+    }
+
+  
+	
+    
 }

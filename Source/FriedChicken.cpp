@@ -1,5 +1,6 @@
 #include "FriedChicken.h"
 
+
 FriedChicken::FriedChicken() : Food("Fried Chicken") {
 
     addStep("Step 1",

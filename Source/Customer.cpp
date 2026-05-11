@@ -1,18 +1,22 @@
 
 #include "Customer.h"
+#include "Food.h"
 #include <iostream>
+#include <vector>
 #include <cstdlib>
 #include <ctime>
 
     Customer::Customer() {
         customerId = 0;
         level = 1;
+    food.clear();
     }
 
     
     Customer::Customer(int id, int lvl) {
         customerId = id;
         level = lvl;
+    food.clear();
     }
 
  
@@ -24,8 +28,8 @@
         level = lvl;
     }
 
-    void Customer::setOrders(const vector<Order>&newOrders) {
-        orders = newOrders;
+void Customer::setfood(const std::vector<Food>& newfood) {
+    food = newfood;
     }
 
   
@@ -37,36 +41,37 @@
         return level;
     }
 
-    vector<Order> Customer::getOrders() const {
-        return orders;
+std::vector<Food> Customer::getfood() const {
+    return food;
     }
 
+void Customer::push_back(const Food& singlefood) {
+    food.push_back(singlefood);
+}
  
-    void Customer::addOrder(const Order & order) {
-        orders.push_back(order);
+Food Customer::pickFood() {
+    if (food.empty()) {
+        std::cout << "No orders available." << std::endl;
+        return Food("");
     }
 
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+    size_t randomIndex = static_cast<size_t>(std::rand() % static_cast<int>(food.size()));
+    return food[randomIndex];
+}
   
-    Order Customer::pickOrder() {
-        if (orders.empty()) {
-            cout << "No orders available." << endl;
-            return Order();
+void Customer::addOrder(const Food& newFood) {
+    this->food.push_back(newFood);
         }
 
-        srand(time(0));
-
-        int randomIndex = rand() % orders.size();
-
-        return orders[randomIndex];
+void Customer::setdisplayfood(const std::vector<Food>& newfood) {
+    food = newfood;
     }
 
+void Customer::displayfood() const {
 
-    void Customer::displayOrders() const {
-        cout << "Customer Orders:" << endl;
-
-        for (size_t i = 0; i < orders.size(); i++) {
-            cout << i + 1 << ". "
-                << orders[i].getFoodType()
-                << endl;
+    std::cout << "Customer Orders:" << std::endl;
+    for (size_t i = 0; i < food.size(); ++i) {
+        std::cout << i + 1 << ". " << food[i].getFoodName() << std::endl;
         }
     }
