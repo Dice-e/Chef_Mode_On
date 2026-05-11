@@ -37,7 +37,10 @@ void GameSession::processFood() {
             std::cin >> input;
             input = static_cast<char>(std::toupper(static_cast<unsigned char>(input)));
 
-            if (input == currentFood.answers[i]) {
+            if (input != 'A' && input != 'B' && input != 'C' && input != 'D') {
+                std::cout << "Invalid input \n";
+            }
+            else if (input == currentFood.answers[i]) {
                 std::cout << ">> Correct! Moving on..." << std::endl;
                 stepCorrect = true;
             }
