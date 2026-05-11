@@ -1,33 +1,32 @@
 #include "FriedChicken.h"
 
-
 FriedChicken::FriedChicken() : Food("Fried Chicken") {
 
     addStep("Step 1",
-        { "Wash chicken", "Eat raw chicken",
-        "Freeze oil", "Skip cleaning" }, 'A');
+        { "Freeze oil", "Eat raw chicken",
+          "Skip cleaning", "Wash chicken" }, 3);
 
     addStep("Step 2",
-        { "Marinate chicken", "Boil chicken instantly",
-        "Burn chicken", "Freeze flour" }, 'A');
+        { "Burn chicken", "Marinate chicken",
+          "Boil chicken instantly", "Freeze flour" }, 1);
 
     addStep("Step 3",
-        { "Prepare flour coating", "Drink seasoning",
-        "Melt chicken", "Skip seasoning" }, 'A');
+        { "Drink seasoning", "Skip seasoning",
+          "Melt chicken", "Prepare flour coating" }, 3);
 
     addStep("Step 4",
-        { "Coat chicken in flour", "Freeze chicken",
-        "Bake raw", "Eat flour only" }, 'A');
+        { "Bake raw", "Coat chicken in flour",
+          "Eat flour only", "Freeze chicken" }, 1);
 
     addStep("Step 5",
-        { "Heat oil", "Freeze oil",
-        "Drink oil", "Remove pan" }, 'A');
+        { "Freeze oil", "Drink oil",
+          "Remove pan", "Heat oil" }, 3);
 
     addStep("Step 6",
-        { "Deep fry chicken", "Bake bread",
-        "Boil burger", "Freeze chicken" }, 'A');
+        { "Bake bread", "Freeze chicken",
+          "Deep fry chicken", "Boil burger" }, 2);
 
     addStep("Step 7",
-        { "Drain oil and serve", "Re-freeze chicken",
-        "Burn chicken", "Mix with fries raw" }, 'A');
+        { "Mix with fries raw", "Drain oil and serve",
+          "Re-freeze chicken", "Burn chicken" }, 1);
 }

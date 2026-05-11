@@ -1,6 +1,7 @@
 #include "Food.h"
 #include <random>
 #include <algorithm>
+#include <ctime>
 
 
 Food::Food(std::string name) {
@@ -8,19 +9,18 @@ Food::Food(std::string name) {
 	isCompleted = false;
 }
 
-bool isCompleted = false;
 
-bool Food::Step::checkAnswer(int answer) {
-    return answer == 0; 
-}
 
-void Food::addStep(std::string question,
-    std::vector<std::string> option,
-    char answer) {
 
+void Food::addStep(const std::string& question,
+    const std::vector<std::string>& choiceList,
+    int correctIndex)
+{
     questions.push_back(question);
-    choices.push_back(option);
-    answers.push_back(answer);
+    choices.push_back(choiceList);
+
+    // Convert 0-3 index into A-D
+    answers.push_back('A' + correctIndex);
 }
 
 
@@ -32,40 +32,52 @@ std::string Food::getFoodName () const {
 bool Food::playFood(int& score) {
 
     std::cout << "\nCooking: " << foodName << "\n";
+    
 
     for (int i = 0; i < questions.size(); i++) {
 
         bool correct = false;
 
+        int currentWinningIndex = 0;
+
+
+
         while (!correct) {
 
+
             std::vector<std::string> tempChoices = choices[i];
+            std::string correctString = answersText[i];
 
-			std::random_device rd;
-			std::mt19937 g(rd());
+            std::random_device rd;
+            std::mt19937 g(static_cast<unsigned int>(std::time(0)));
 
-            std::shuffle(tempChoices.begin(), tempChoices.end(),g);
+
+            std::shuffle(tempChoices.begin(), tempChoices.end(), g);
 
             std::cout << "\n" << questions[i] << "\n";
 
             char letters[4] = { 'A', 'B', 'C', 'D' };
 
-            int correctIndex = 0;
+            int currentCorrectLetterIdx = 0;;
 
             for (int j = 0; j < tempChoices.size(); j++) {
-                std::cout << letters[j] << ". "
-                    << tempChoices[j] << "\n";
+                std::cout << letters[j] << ". "<< tempChoices[j] << "\n";
 
-                if (tempChoices[j] == choices[i][0]) {
-                    correctIndex = j;
+                if (tempChoices[j] == correctString) {
+                    currentWinningIndex = j;
                 }
+            }
+
+            if (currentWinningIndex == -1) {
+                // If this prints, it means the code couldn't find the correct answer in the list!
+                std::cout << "DEBUG ERROR: Correct answer string not found in choices!" << std::endl;
+                return false;
             }
 
             char userAnswer;
             std::cout << "Answer: ";
             std::cin >> userAnswer;
-
-
+            std::cin.ignore(1000, '\n');
             userAnswer = toupper(userAnswer);
 
 
@@ -75,11 +87,11 @@ bool Food::playFood(int& score) {
                 std::cout << "Score: " << score << "\n";
                 return true;
             }
-              else if (userAnswer == letters[correctIndex]) {
+            else if (userAnswer == letters[currentWinningIndex]) {
                 std::cout << "Correct!\n";
                 correct = true;
             }
-                      
+
             else {
 
                 score -= 10;
@@ -90,10 +102,17 @@ bool Food::playFood(int& score) {
                 if (score <= 0) {
                     std::cout << "GAME OVER!\n";
                     return false;
-                
+
                 }
 
-         
+                int userIndex = userAnswer - 'A';
+
+                if (userIndex == currentWinningIndex) {
+                    std::cout << "Correct!\n";
+                    correct = true;
+                }
+
+
             }
         }
     }
@@ -102,24 +121,9 @@ bool Food::playFood(int& score) {
         << " completed successfully!\n";
 
     return true;
-}
+};
 
-void userAnswer(char input) {
-	char letters[] = { 'A', 'B', 'C', 'D' };
-    switch (input)
-    {
-    case 1:
-		letters[0] = 'A';
-        std::cout << "Correct!\n";
-		break;
-    case 2:
-		letters[1] = 'B';
-
-    default:
-        break;
-    }
 
   
 	
     
-}

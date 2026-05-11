@@ -9,22 +9,24 @@
 #include <ctime>
 
 class Food {
-protected:
+public:
     std::string foodName;
     std::vector<std::string> questions;
     std::vector<std::vector<std::string>> choices;
     std::vector<char> answers;
+    std::vector<std::string> answersText;
 
 public:
+    
     Food(std::string name);
-
-    void addStep(std::string question,
-        std::vector<std::string> option,
-        char answer);
+	bool isCompleted;
+    void addStep(const std::string& question,
+        const std::vector<std::string>& choices,
+        int correctIndex);
 
     bool playFood(int& score);
 
-    std::string getFoodName();
+    std::string getFoodName () const;
 };
 
 #endif
