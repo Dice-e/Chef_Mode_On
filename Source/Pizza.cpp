@@ -3,30 +3,30 @@
 Pizza::Pizza() : Food("Pizza") {
 
     addStep("Step 1",
-        { "Prepare dough", "Eat flour raw",
-        "Freeze cheese", "Skip dough" }, 'A');
+        { "Prepare dough", "Freeze cheese",
+          "Eat flour raw", "Skip dough" }, 2);
 
     addStep("Step 2",
-        { "Let dough rise", "Burn dough",
-        "Freeze dough instantly", "Eat raw yeast" }, 'A');
+        { "Burn dough", "Let dough rise",
+          "Freeze dough instantly", "Eat raw yeast" }, 1);
 
     addStep("Step 3",
-        { "Prepare sauce", "Drink raw flour",
-        "Freeze tomatoes", "Skip sauce" }, 'A');
+        { "Freeze tomatoes", "Prepare sauce",
+          "Drink raw flour", "Skip sauce" }, 1);
 
     addStep("Step 4",
-        { "Spread dough", "Fry dough",
-        "Eat dough raw", "Freeze plate" }, 'A');
+        { "Fry dough", "Eat dough raw",
+          "Freeze plate", "Spread dough" }, 3);
 
     addStep("Step 5",
-        { "Add sauce and toppings", "Remove dough",
-        "Burn toppings", "Freeze pizza" }, 'A');
+        { "Burn toppings", "Remove dough",
+          "Add sauce and toppings", "Freeze pizza" }, 2);
 
     addStep("Step 6",
-        { "Bake pizza", "Fry pizza",
-        "Freeze oven", "Eat raw dough" }, 'A');
+        { "Freeze oven", "Bake pizza",
+          "Eat raw dough", "Fry pizza" }, 1);
 
     addStep("Step 7",
-        { "Slice and serve", "Freeze pizza forever",
-        "Burn slice", "Re-bake endlessly" }, 'A');
+        { "Burn slice", "Slice and serve",
+          "Freeze pizza forever", "Re-bake endlessly" }, 1);
 }

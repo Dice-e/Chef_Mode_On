@@ -14,13 +14,15 @@ public:
     std::vector<std::string> questions;
     std::vector<std::vector<std::string>> choices;
     std::vector<char> answers;
+    std::vector<std::string> answersText;
 
 public:
+    
     Food(std::string name);
 	bool isCompleted;
-    void addStep(std::string question,
-        std::vector<std::string> option,
-        char answer);
+    void addStep(const std::string& question,
+        const std::vector<std::string>& choices,
+        int correctIndex);
 
     bool playFood(int& score);
 

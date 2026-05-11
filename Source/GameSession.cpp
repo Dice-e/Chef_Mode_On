@@ -20,6 +20,12 @@ bool GameSession::checkFailure() const {
 void GameSession::processFood() {
     std::cout << "\n--- KITCHEN START: " << currentFood.getFoodName() << " ---" << std::endl;
 
+    if (currentFood.questions.size() != currentFood.answers.size()) {
+        std::cout << "ERROR: Questions and answers mismatch!\n";
+        return;
+    }
+
+
     for (size_t i = 0; i < currentFood.questions.size(); i++) {
         bool stepCorrect = false;
 

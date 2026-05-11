@@ -3,30 +3,30 @@
 Burger::Burger() : Food("Burger") {
 
     addStep("Step 1",
-        { "Prepare buns", "Eat raw bread dough",
-        "Freeze beef", "Burn buns" }, 'A');
+        { "Burn buns", "Eat raw bread dough",
+          "Freeze beef", "Prepare buns" }, 3);
 
     addStep("Step 2",
-        { "Shape patty", "Freeze buns",
-        "Drink meat juice", "Skip patty" }, 'A');
+        { "Freeze buns", "Shape patty",
+          "Skip patty", "Drink meat juice" }, 1);
 
     addStep("Step 3",
-        { "Season patty", "Burn cheese",
-        "Freeze grill", "Eat raw salt" }, 'A');
+        { "Burn cheese", "Eat raw salt",
+          "Freeze grill", "Season patty" }, 3);
 
     addStep("Step 4",
-        { "Grill patty", "Fry buns",
-        "Freeze patty raw", "Boil bread" }, 'A');
+        { "Freeze patty raw", "Grill patty",
+          "Boil bread", "Fry buns" }, 1);
 
     addStep("Step 5",
-        { "Toast buns", "Freeze lettuce",
-        "Burn ketchup", "Eat raw bun dough" }, 'A');
+        { "Toast buns", "Burn ketchup",
+          "Freeze lettuce", "Eat raw bun dough" }, 0);
 
     addStep("Step 6",
-        { "Add toppings", "Freeze burger",
-        "Burn vegetables", "Skip assembly" }, 'A');
+        { "Burn vegetables", "Add toppings",
+          "Freeze burger", "Skip assembly" }, 1);
 
     addStep("Step 7",
-        { "Assemble and serve", "Re-cook burger",
-        "Freeze finished burger", "Disassemble" }, 'A');
+        { "Re-cook burger", "Assemble and serve",
+          "Disassemble", "Freeze finished burger" }, 1);
 }
