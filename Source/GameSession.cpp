@@ -82,15 +82,29 @@ void GameSession::processFood() {
 }
 
 void GameSession::processHierarchicalOrder() {
-    if (rootOrder == nullptr) {
-        return;
-    }
+     if (rootOrder == nullptr) {
+         return;
+     }
 
-    
-    rootOrder->displayHierarchy(0);
-  
+     processOrderRecursively(rootOrder);
+}
 
-    processFood();
+void GameSession::processOrderRecursively(Order* order) {
+     if (order == nullptr) {
+         return;
+     }
+
+     // Set the current food to this order's food
+     if (order->getFood() != nullptr) {
+         currentFood = *order->getFood();
+     }
+
+     processFood();
+
+     // Process all child orders
+     for (Order* childOrder : order->getChildOrders()) {
+         processOrderRecursively(childOrder);
+     }
 }
 
 Order* GameSession::getRootOrder() const {

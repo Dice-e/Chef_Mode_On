@@ -16,11 +16,12 @@ public:
     ~GameSession();
 
     void deductPoints(int amount = 10);
-    bool checkFailure() const;
-    void processFood();
-    void processHierarchicalOrder();
-    Order* getRootOrder() const;
-    int getPoints() const;
+     bool checkFailure() const;
+     void processFood();
+     void processHierarchicalOrder();
+     void processOrderRecursively(Order* order);
+     Order* getRootOrder() const;
+     int getPoints() const;
 };
 
 #endif
