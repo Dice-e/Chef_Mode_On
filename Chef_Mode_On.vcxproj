@@ -130,6 +130,7 @@
     <ClCompile Include="source\Fries.cpp" />
     <ClCompile Include="source\GameSession.cpp" />
     <ClCompile Include="source\Main.cpp" />
+    <ClCompile Include="Source\Order.cpp" />
     <ClCompile Include="source\Pizza.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +140,7 @@
     <ClInclude Include="header\FriedChicken.h" />
     <ClInclude Include="header\Fries.h" />
     <ClInclude Include="header\GameSession.h" />
+    <ClInclude Include="header\Order.h" />
     <ClInclude Include="header\Pizza.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
