@@ -4,7 +4,7 @@ Pizza::Pizza() : Food("Pizza") {
 
     addStep("Step 1",
         { "Prepare dough", "Freeze cheese",
-          "Eat flour raw", "Skip dough" }, 2);
+          "Eat flour raw", "Skip dough" }, 0);
 
     addStep("Step 2",
         { "Burn dough", "Let dough rise",
