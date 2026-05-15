@@ -5,28 +5,23 @@
 #include <vector>
 #include <string>
 #include <algorithm>
-#include <cstdlib>
 #include <ctime>
 
 class Food {
 public:
-    std::string foodName;
-    std::vector<std::string> questions;
-    std::vector<std::vector<std::string>> choices;
-    std::vector<char> answers;
-    std::vector<std::string> answersText;
-
-public:
-    
-    Food(std::string name);
+	std::string foodName;
 	bool isCompleted;
-    void addStep(const std::string& question,
-        const std::vector<std::string>& choices,
-        int correctIndex);
+	std::vector<std::string> questions;
+	std::vector<std::vector<std::string>> choices;
+	std::vector<char> answers;
+	std::vector<std::string> answersText;
 
-    bool playFood(int& score);
-
-    std::string getFoodName () const;
+	Food(std::string name);
+	void addStep(const std::string& question,
+		const std::vector<std::string>& choices,
+		int correctIndex);
+	bool playFood(int& score);
+	std::string getFoodName() const;
 };
 
 #endif

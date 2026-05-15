@@ -4,8 +4,24 @@
 #include <cctype>
 
 GameSession::GameSession(const Food& food, int startingPoints)
-    : points(startingPoints), currentFood(food)
+    : points(startingPoints), currentFood(food), rootOrder(nullptr)
 {
+}
+
+GameSession::GameSession(Order* order, int startingPoints)
+    : points(startingPoints), rootOrder(order), currentFood("")
+{
+    if (order != nullptr && order->getFood() != nullptr) {
+        currentFood = *order->getFood();
+    }
+}
+
+GameSession::~GameSession() {
+    // rootOrder is managed by the caller, not by GameSession
+}
+
+int GameSession::getPoints() const {
+    return points;
 }
 
 void GameSession::deductPoints(int amount) {
@@ -24,7 +40,6 @@ void GameSession::processFood() {
         std::cout << "ERROR: Questions and answers mismatch!\n";
         return;
     }
-
 
     for (size_t i = 0; i < currentFood.questions.size(); i++) {
         bool stepCorrect = false;
@@ -64,5 +79,21 @@ void GameSession::processFood() {
     currentFood.isCompleted = true;
     std::cout << "\nOrder Complete!\n";
 
-};
+}
+
+void GameSession::processHierarchicalOrder() {
+    if (rootOrder == nullptr) {
+        return;
+    }
+
+    
+    rootOrder->displayHierarchy(0);
+  
+
+    processFood();
+}
+
+Order* GameSession::getRootOrder() const {
+    return rootOrder;
+}
 
