@@ -27,7 +27,7 @@ char displayLevelCompleteMenu(int currentLevel) {
     return choice;
 }
 
-// Create Level 1: 1 Order
+// Level 1: 1 Order
 Order* createLevel1(const std::vector<Food>& menu, int& orderIdCounter) {
     Customer mainCustomer(1, 1);
     Food mainFood = menu[std::rand() % menu.size()];
