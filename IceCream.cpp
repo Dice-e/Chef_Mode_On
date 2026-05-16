@@ -1,33 +1,32 @@
 #include "IceCream.h"
 
-IceCream::IceCream() : Food("Icecream") {
+IceCream::IceCream() : Food("IceCream") {
 
-addStep("Step 1",
-    { "Free the mixture", "Mix the ingredients",
-      "Gather the ingredients", "Churn the mixture" }, 2);
+    addStep("Step 1",
+        { "Chocolate chips", "Ice and salt",
+          "Milk, cream, sugar, and flavoring", "Sprinkles" }, 2);
 
-addStep("Step 2",
-    { "To melt the bowl", "Milk,cream,and sugar",
-      "To dissolve the sugar", "To freeze it faster" }, 1);
+    addStep("Step 2",
+        { "Freeze immediately", "Mix everything in a bowl until smooth",
+          "Add toppings first", "Heat the mixture until boiling" }, 1);
 
-addStep("Step 3",
-    { "Cool the mixture", "Add candy",
-      "To dissolve the sugar", "Serve it" }, 2);
+    addStep("Step 3",
+        { "Add ice cubes", "Boil again",
+          "Eat it raw", "Let it rest in the fridge" }, 3);
 
-addStep("Step 4",
-    { "Blender", "Oven",
-      "Let the mixture cool", "Skip soaking" }, 2);
+    addStep("Step 4",
+        { "Frying pan", "Baking tray",
+          "Freezer-safe container", "Plate" }, 2);
 
-addStep("Step 5",
-    { "Freeze wet potatoes", "Ice cream maker",
-      "Dry potatoes", "Serving and enjoying" }, 1);
+    addStep("Step 5",
+        { "Leave it outside", "Freeze until solid",
+          "Heat it in microwave", "Stir on stove" }, 1);
 
-addStep("Step 6",
-    { "The mixture becomes creamy", "Deep fry potatoes",
-      "Freeze fries", "Eat raw oil" }, 0);
+    addStep("Step 6",
+        { "To melt it faster", "To add air and prevent ice crystals",
+          "To cook it", "To make it salty" }, 1);
 
-addStep("Step 7",
-    { "Re-fry forever", "Season and serve",
-      "Freeze and serve the ice cream", "Burn fries" }, 2);
+    addStep("Step 7",
+        { "Boil it again", "Mix with water",
+          "Freeze longer forever", "Serve with toppings" }, 3);
 }
-
