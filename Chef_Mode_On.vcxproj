@@ -38,7 +38,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="IceCream.cpp" />
     <ClCompile Include="source\Burger.cpp" />
     <ClCompile Include="source\Customer.cpp" />
     <ClCompile Include="source\Food.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="header\GameSession.h" />
     <ClInclude Include="header\Order.h" />
     <ClInclude Include="header\Pizza.h" />
+    <ClInclude Include="IceCream.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
