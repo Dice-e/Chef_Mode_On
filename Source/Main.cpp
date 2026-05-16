@@ -9,6 +9,9 @@
 #include "Burger.h"
 #include "Pizza.h"
 #include "FriedChicken.h"
+#include "IceCream.h"
+#include "Fries.h"
+
 //IF I SEE THIS MY COMMIT PASS THROUGH
 // Function to display continue/exit menu
 char displayLevelCompleteMenu(int currentLevel) {
@@ -114,7 +117,9 @@ int main() {
     Burger burger;
     Pizza pizza;
     FriedChicken chicken;
-    std::vector<Food> menu = { burger, pizza, chicken };
+	Fries fries;
+	IceCream icecream;
+    std::vector<Food> menu = { burger, pizza, chicken, fries, icecream };
 
     int orderIdCounter = 1;
     int currentLevel = 1;
